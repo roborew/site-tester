@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Pulse | Coming Soon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @keyframes breathe {
+            0%, 100% { 
+                transform: scale(1); 
+                filter: drop-shadow(0 0 15px rgba(99, 102, 241, 0.2));
+            }
+            50% { 
+                transform: scale(1.08); 
+                filter: drop-shadow(0 0 35px rgba(99, 102, 241, 0.5));
+            }
+        }
+        .animate-breathe {
+            animation: breathe 4s ease-in-out infinite;
+        }
+        .bg-grid {
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans h-full overflow-hidden selection:bg-indigo-500/30">
+
+    <!-- Background Elements -->
+    <div class="fixed inset-0 z-0 bg-grid pointer-events-none"></div>
+    <div class="fixed inset-0 z-0 bg-gradient-to-tr from-indigo-500/5 via-transparent to-transparent pointer-events-none"></div>
+
+    <main class="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 text-center">
+        
+        <!-- The Digital Pulse Visual -->
+        <div class="relative mb-12 group">
+            <!-- Outer Glow Ring (Static) -->
+            <div class="absolute inset-0 rounded-full bg-indigo-500/10 blur-3xl scale-150 opacity-50 group-hover:opacity-80 transition-opacity duration-700"></div>
+            
+            <!-- Central Pulse Orb (SVG as requested) -->
+            <div class="relative animate-breathe cursor-pointer transition-all duration-500 hover:scale-105">
+                <svg width="140" height="140" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Outer Rings -->
+                    <circle cx="70" cy="70" r="68" stroke="currentColor" stroke-width="1" class="text-indigo-500/10" />
+                    <circle cx="70" cy="70" r="58" stroke="currentColor" stroke-width="2" class="text-indigo-500/20" />
+                    <!-- Main Orb -->
+                    <circle cx="70" cy="70" r="45" fill="currentColor" class="text-indigo-500 shadow-indigo-500/50" />
+                    <!-- Activity Icon -->
+                    <g transform="translate(55, 55) scale(1.25)">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </g>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Messaging -->
+        <div class="max-w-2xl space-y-6">
+            <div class="flex items-center justify-center gap-2 mb-2 opacity-0 animate-[fadeIn_1s_ease-out_forwards]">
+                <i data-lucide="globe" class="w-4 h-4 text-indigo-500"></i>
+                <span class="text-xs font-medium tracking-widest uppercase text-slate-400">Domain Verified & Active</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-slate-100 opacity-0 animate-[fadeIn_1s_ease-out_0.3s_forwards]">
+                Coming <span class="text-indigo-500">Soon</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl font-light text-slate-400 max-w-md mx-auto leading-relaxed opacity-0 animate-[fadeIn_1s_ease-out_0.6s_forwards]">
+                We're currently configuring our digital home. <br class="hidden md:block"> Stay tuned for the full experience.
+            </p>
+
+            <!-- CTA/Contact Hint -->
+            <!-- <div class="pt-8 flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-[fadeIn_1s_ease-out_0.9s_forwards]">
+                <a href="mailto:hello@yourdomain.com" class="flex items-center gap-2 px-6 py-3 bg-slate-900/50 border border-slate-800 rounded-full hover:bg-slate-800 hover:border-indigo-500/50 transition-all duration-300 group">
+                    <i data-lucide="mail" class="w-4 h-4 text-indigo-400 group-hover:text-indigo-300"></i>
+                    <span class="text-sm font-medium">Inquiries: hello@yourdomain.com</span>
+                </a>
+            </div> -->
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="fixed bottom-0 left-0 right-0 z-20 p-8 flex flex-col items-center gap-4">
+        <div class="flex items-center gap-6 text-slate-500">
+            <div class="flex items-center gap-2">
+                <i data-lucide="zap" class="w-3 h-3 text-indigo-500"></i>
+                <span class="text-[10px] uppercase tracking-widest">Hosting Verified</span>
+            </div>
+            <div class="w-px h-3 bg-slate-800"></div>
+            <div class="flex items-center gap-2">
+                <i data-lucide="globe" class="w-3 h-3 text-indigo-500"></i>
+                <span class="text-[10px] uppercase tracking-widest">DNS Propagated</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Custom Fade In Animation for Tailwind
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
